@@ -1,6 +1,6 @@
 # Code Samples: Jeremy Phillips
 
-I curated source files from two of my personal projects, shared in support of my Senior Frontend Engineer application. These are **read-only samples**, not runnable projects; each subdirectory pulls representative files out of a larger working app so you can review the code without setting anything up.
+Curated source files from three of my personal projects, shared in support of a job application. These are **read-only samples**, not runnable projects; each subdirectory pulls representative files out of a larger working app so you can review the code without setting anything up.
 
 The full projects are private; if you'd like a live demo or a walkthrough of the rest of the codebase, I'm happy to share more.
 
@@ -19,6 +19,17 @@ Live at [audiotagger.io](https://audiotagger.io)
 - Zustand store with `Map`-based pending-edit tracking
 - Complex form UI with mixed-value detection across multi-selection
 - Image processing utilities (artwork resize to 1400×1400)
+
+### [`wavetrimmer/`](./wavetrimmer): Next.js 16 + React 19 + FFmpeg WASM + peaks.js
+
+A browser-based audio editor: trim to an exact waveform range, normalize loudness, convert format, and add intro/outro clips, all client-side with no upload.
+
+**Highlights demonstrated in the samples:**
+
+- Client-side FFmpeg WASM singleton with multi-format conversion
+- Waveform editor orchestration with peaks.js (non-React instance managed via refs)
+- Custom spatially-scoped event hook (`useEventInBounds`)
+- Trim/zoom/scroll UI components synchronized to waveform state imperatively
 
 ### [`workout-tracker/`](./workout-tracker): Next.js 16 (App Router) + TypeScript + PWA
 
@@ -41,6 +52,13 @@ A mobile-first PWA for tracking strength workouts: per-exercise sets/reps/rest, 
 | `track-tagger/src/components/AlbumArtwork.tsx`    | 240   | Drag-drop image upload + resize pipeline                  |
 | `track-tagger/src/hooks/useMetadataEditor.ts`     | 263   | Custom hook encapsulating write/progress/error state      |
 | `track-tagger/src/store/songStore.ts`             | 192   | Zustand store design                                      |
+| `wavetrimmer/src/components/PeakPlayer/PeakPlayer.js`       | 551 | Waveform editor: FFmpeg WASM, trim, normalize, export  |
+| `wavetrimmer/src/components/PeakPlayer/TrimSlider.js`       | 114 | Dual-handle trim range synced to waveform time         |
+| `wavetrimmer/src/components/PeakPlayer/ZoomViewContainer.js`| 165 | Waveform zoom view with peaks.js                       |
+| `wavetrimmer/src/components/PeakPlayer/WaveScrollbar.js`    | 124 | Custom scrollbar for waveform navigation               |
+| `wavetrimmer/src/lib/load-ffmpeg.js`                        | 25  | FFmpeg WASM singleton loader                           |
+| `wavetrimmer/src/lib/convert.js`                            | 63  | Format-conversion dispatcher                           |
+| `wavetrimmer/src/lib/hooks/useEventInBounds.js`             | 53  | Spatially-scoped DOM event hook                        |
 | `workout-tracker/src/app/page.tsx`                | 287   | App Router page with workout state + history              |
 | `workout-tracker/src/components/workout-card.tsx` | 229   | Interactive exercise card with dialogs                    |
 | `workout-tracker/src/components/video-player.tsx` | 165   | Custom HTML5 video controls                               |
